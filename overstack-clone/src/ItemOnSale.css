@@ -1,0 +1,19 @@
+.itemOnSale {
+  display: flex;
+  flex-direction: column;
+}
+.itemOnSale__image {
+  width: 100%;
+}
+.itemOnSale__price {
+  color: #c7202c;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.itemOnSale__title {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #2f3337;
+  margin-bottom: 5px;
+}

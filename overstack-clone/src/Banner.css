@@ -1,0 +1,16 @@
+.banner{
+    width: 100vw;
+    background: url('https://ak1.ostkcdn.com/images/products/is/images/direct/9c4d5f747e832c77bfaa47024c4e8fe832ef02d5/Safavieh-Madison-Avery-Distressed-Vintage-Boho-Chic-Rug.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin-top: 100px;
+}
+.banner>img{
+    max-width: 100%;
+}
+
+.banner__imageContainer{
+    display: flex;
+    justify-content: center;
+}

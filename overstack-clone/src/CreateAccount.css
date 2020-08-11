@@ -1,0 +1,46 @@
+.createAccount{
+    max-width: 350px;
+    padding: 20px;
+    margin-right: 50px;
+    border-right: 1px solid rgb(231, 231, 231);
+}
+
+.createAccount__title {
+  color: #444;
+  margin-bottom: 40px;
+  font-size: 20px;
+  margin: 0 0 12px;
+  line-height: 26px;
+}
+
+.createAccount__password{
+    display: flex;
+}
+.createAccount__password>label:not(:last-child){
+    margin-right: 15px;
+}
+.createAccount__offers{
+    background-color: #f9fafc;
+    text-align: left;
+    margin: 20px 0;
+    border: 1px solid #dadcdf;
+    border-radius: 3px;
+    padding: 8px 20px;
+    color: #626669;
+    font-size: 12px;
+    line-height: 20px;
+}
+.createAccount__button{
+    background-color: #0272A2 !important;
+    padding: 11px 15px;
+        border-color: #005F8B;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
+    background: #fafafa;
+    border: 1px solid #d5d7d8;
+    width: 100%;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}

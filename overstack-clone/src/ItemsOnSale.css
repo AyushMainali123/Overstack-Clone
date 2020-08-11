@@ -1,0 +1,21 @@
+.itemsOnSale{
+    margin:100px 0;
+}
+
+.itemsOnSale__title{
+    text-align: center;
+    margin: 35px 0;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+.itemsOnSale__items{
+    display: grid;
+    margin: 10px 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    row-gap: 35px;
+    column-gap: 20px;
+}
+
+.itemsOnSale__link{
+    text-decoration: none;
+}
