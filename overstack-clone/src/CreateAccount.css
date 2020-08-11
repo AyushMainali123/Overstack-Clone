@@ -1,8 +1,8 @@
-.createAccount{
-    max-width: 350px;
-    padding: 20px;
-    margin-right: 50px;
-    border-right: 1px solid rgb(231, 231, 231);
+.createAccount {
+  max-width: 350px;
+  padding: 20px;
+  margin-right: 50px;
+  border-right: 1px solid rgb(231, 231, 231);
 }
 
 .createAccount__title {
@@ -12,35 +12,77 @@
   margin: 0 0 12px;
   line-height: 26px;
 }
+.createAccount__name {
+  display: flex;
+}
+.createAccount__name > label:first-child {
+  margin-right: 15px;
+}
+.createAccount__name input[type="text"] {
+  font-weight: 400;
+  height: 36px;
+  display: inline-block;
+  padding: 7px 15px;
+  background: #fff;
+  color: #444;
+  font-weight: bold;
+  border: 1px solid #d5d7d8;
+  border-radius: 3px;
+  vertical-align: bottom;
+  width: 100%;
+}
 
-.createAccount__password{
-    display: flex;
+.createAccount__password {
+  display: flex;
 }
-.createAccount__password>label:not(:last-child){
-    margin-right: 15px;
+
+.createAccount__password > label:not(:last-child) {
+  margin-right: 15px;
 }
-.createAccount__offers{
-    background-color: #f9fafc;
-    text-align: left;
-    margin: 20px 0;
-    border: 1px solid #dadcdf;
-    border-radius: 3px;
-    padding: 8px 20px;
-    color: #626669;
-    font-size: 12px;
-    line-height: 20px;
+.createAccount__offers {
+  background-color: #f9fafc;
+  text-align: left;
+  margin: 20px 0;
+  border: 1px solid #dadcdf;
+  border-radius: 3px;
+  padding: 8px 20px;
+  color: #626669;
+  font-size: 12px;
+  line-height: 20px;
 }
-.createAccount__button{
-    background-color: #0272A2 !important;
-    padding: 11px 15px;
-        border-color: #005F8B;
-    color: #fff;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.3);
-    background: #fafafa;
-    border: 1px solid #d5d7d8;
-    width: 100%;
-    border-radius: 3px;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
+.createAccount__button {
+  background-color: #0272a2 !important;
+  padding: 11px 15px;
+  border-color: #005f8b;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  background: #fafafa;
+  border: 1px solid #d5d7d8;
+  width: 100%;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+}
+input[type="password"] {
+  width: 100% !important;
+}
+@media (max-width: 767px) {
+  .createAccount {
+    margin: 0;
+    text-align: center;
+    border: none;
+    border-bottom: 2px solid rgb(231, 231, 231);
+  }
+  .createAccount__password, .createAccount__name {
+    flex-direction: column;
+  }
+  label{
+      text-align: left;
+  }
+
+  .createAccount__password > label:not(:last-child),
+  .createAccount__name > label:not(:last-child) {
+    margin-right: 0;
+  }
 }

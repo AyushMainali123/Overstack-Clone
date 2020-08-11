@@ -6,9 +6,9 @@ import { Button } from "@material-ui/core";
 import "./Checkout.css";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import CartItem from "./CartItem";
-
+import numeral from 'numeral'
 const Checkout = () => {
-  const [{ cart, items }, dispatch] = useStateValue();
+  const [{ cart }] = useStateValue();
   const [discount, setDiscount] = useState(0);
   const [subtotal, setsubtotal] = useState(0);
 
@@ -65,19 +65,19 @@ const Checkout = () => {
         <div className="checkout__right">
           <div className="checkout__subtotal">
             <span>Subtotal:</span>
-            <span>{subtotal}</span>
+            <span>{numeral(subtotal).format("$0,0.00")}</span>
           </div>
           <div className="checkout__discount">
             <span>Promotional Savings:</span>
-            <span>{discount}</span>
+            <span>{numeral(discount).format("$0,0.00")}</span>
           </div>
           <div className="checkout__totalAfterDiscount">
             <span>Subtotal After Discounts:</span>
-            <span>{subtotal - discount}</span>
+            <span>{numeral(subtotal - discount).format("$0,0.00")}</span>
           </div>
           <div className="checkout__total">
             <span>Your Total:</span>
-            <span>{subtotal - discount}</span>
+            <span>{numeral(subtotal - discount).format("$0,0.00")}</span>
           </div>
           <Button>
             <LockIcon />

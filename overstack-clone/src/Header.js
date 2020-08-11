@@ -7,9 +7,10 @@ import ShoppingCartOutlinedIcon from "@material-ui/icons/ShoppingCartOutlined";
 import "./Header.css";
 import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
+import { Button } from "@material-ui/core";
 
 const Header = () => {
-  const [{ items, cart, user }, dispatch] = useStateValue();
+  const [{  cart, user }] = useStateValue();
   const handleUserClick = (e) => {
     if (user) {
       auth.signOut();
@@ -36,7 +37,7 @@ const Header = () => {
       </form>
       <div className="header__navLinks">
         <Link to={!user ? "/signin" : "/"}>
-          <div className="header__link" onClick={handleUserClick}>
+          <div className="header__link">
             <PermIdentityOutlinedIcon className="header__icon" />
             <span className="header__linkText">
               {user ? user.email : "Sign In"}
@@ -56,6 +57,15 @@ const Header = () => {
             <span>{cart.length}</span>
           </div>
         </Link>
+        {user && (
+          <Button
+            onClick={handleUserClick}
+            color="secondary"
+            variant="contained"
+          >
+            Sign Out
+          </Button>
+        )}
       </div>
     </div>
   );

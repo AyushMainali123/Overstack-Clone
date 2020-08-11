@@ -5,9 +5,9 @@ import ItemsOnSale from "./ItemsOnSale";
 const Home = () => {
   return (
     <div className="home">
-          <Banner />
-          <FeaturedItems />
-          <ItemsOnSale />
+      <Banner />
+      <ItemsOnSale />
+      <FeaturedItems />
     </div>
   );
 };

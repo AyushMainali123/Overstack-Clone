@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    margin-top: 100px;
+    margin-top: 80px;
 }
 .banner>img{
     max-width: 100%;
@@ -13,4 +13,9 @@
 .banner__imageContainer{
     display: flex;
     justify-content: center;
+}
+@media(max-width: 767px){
+  .banner{
+      margin-top: 200px;
+  }
 }

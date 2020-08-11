@@ -12,8 +12,9 @@ label {
   color: #626669;
 }
 input[type="email"],
-input[type="password"] {
-  width: 100%;
+input[type="password"]
+ {
+  width: 305px;
   font-weight: 400;
   height: 36px;
   display: inline-block;
@@ -34,4 +35,22 @@ h3{
   font-size: 20px;
   margin: 0 0 12px;
   line-height: 26px;
+}
+@media(max-width: 950px){
+  .signinPage{
+    margin: 100px 30px;
+  }
+}
+
+@media(max-width: 767px){
+  .signinPage{
+    flex-direction: column;
+    margin-top: 170px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80vw;
+    align-items: center;
+    /* background-color: lavenderblush; */
+  }
+  
 }

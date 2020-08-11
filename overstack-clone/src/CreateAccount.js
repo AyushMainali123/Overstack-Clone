@@ -5,30 +5,29 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 const CreateAccount = () => {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checkPassword, setCheckPassword] = useState("");
-  const history = useHistory()
+  const history = useHistory();
   const handleSubmit = (event) => {
     event.preventDefault();
     if (checkPassword === password) {
       auth
         .createUserWithEmailAndPassword(email, password)
         .then((auth) => {
-          //   Created a user and logged in, redirect to homepage
           history.push("/");
         })
         .catch((error) => console.log(error.message));
-
     } else {
-      alert('Please enter same password in both fields')
+      alert("Please enter same password in both fields");
     }
-    
   };
   return (
     <form className="createAccount">
       <h3 className="createAccount__title">Create Account</h3>
       <div>
+
         <label className="createAccount__email">
           <div className="target">Email Address*</div>
           <input

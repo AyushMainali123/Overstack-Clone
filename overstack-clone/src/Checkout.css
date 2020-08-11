@@ -104,3 +104,19 @@
 .checkout__total > span:first-child {
   flex: 0.6;
 }
+@media(max-width: 1030px){
+  .checkout{
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  .checkout__headerRight>button{
+    
+    display: none !important;
+  }
+  .checkout__mainContainer{
+    flex-direction: column;
+  }
+  .checkout__right{
+    width: 100%;
+  }
+}
