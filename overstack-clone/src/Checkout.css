@@ -99,6 +99,7 @@
   font-size: 14px;
   font-weight: 700;
 }
+
 .checkout__subtotal,
 .checkout__discount,
 .checkout__totalAfterDiscount,
@@ -106,11 +107,11 @@
   display: flex;
   justify-content: space-between;
 }
-.checkout__subtotal,
-.checkout__discount,
-.checkout__totalAfterDiscount,
+.checkout__subtotal>span:first-child,
+.checkout__discount>span:first-child,
+.checkout__totalAfterDiscount>span:first-child,
 .checkout__total > span:first-child {
-  flex: 0.6;
+  flex: 0.8;
 }
 @media (max-width: 1030px) {
   .checkout {

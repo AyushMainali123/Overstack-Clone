@@ -64,10 +64,6 @@ const Checkout = () => {
         </Link>
         <div className="checkout__headerRight">
           <span>Shopping Cart</span>
-          {/* <Button>
-            <LockIcon />
-            <span>Check Out</span>
-          </Button> */}
         </div>
       </div>
       <hr />
