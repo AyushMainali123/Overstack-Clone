@@ -4,6 +4,7 @@ import { useStateValue } from "./StateProvider";
 import "./ItemDescription.css";
 import { FormControl, Select, MenuItem, Button } from "@material-ui/core";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import {setCartItemsToLocalStorage} from './localStorage'
 const quantityArray = [];
 for (let i = 1; i <= 20; i++) {
   quantityArray.push(i);
@@ -29,9 +30,11 @@ const ItemDescription = () => {
       payload: {
         item: { ...item, quantity: value },
       },
-    });
+    })
+    
     history.push('/checkout')
   };
+
 
   return item ? (
     <div className="itemDescription">

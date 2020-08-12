@@ -73,22 +73,26 @@ const Checkout = () => {
           <span>Keep Shopping</span>
         </div>
       </Link>
+
       <div className="checkout__mainContainer">
+        
         <div className="checkout__left">
-          {cart?.map((item) => {
-            const { id, title, price, rating, imageUrl, quantity } = item;
-            return (
-              <CartItem
-                key={id}
-                id={id}
-                title={title}
-                price={price}
-                rating={rating}
-                quantity={quantity}
-                imageUrl={imageUrl}
-              />
-            );
-          })}
+          {
+            cart.length ? cart?.map((item) => {
+              const { id, title, price, rating, imageUrl, quantity } = item;
+              return (
+                <CartItem
+                  key={id}
+                  id={id}
+                  title={title}
+                  price={price}
+                  rating={rating}
+                  quantity={quantity}
+                  imageUrl={imageUrl}
+                />
+              );
+            }) : <h1>No Items in the cart</h1>
+          }
         </div>
         <div className="checkout__right">
           <div className="checkout__subtotal">

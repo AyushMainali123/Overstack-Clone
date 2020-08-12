@@ -9,14 +9,14 @@ import { useStateValue } from "./StateProvider";
 import Checkout from "./Checkout";
 import SignInPage from "./SignInPage";
 import { auth } from "./firebase";
-import { loadStripe } from '@stripe/stripe-js'
-import { Elements } from '@stripe/react-stripe-js'
-import Creditcard from './Creditcard'
-
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import Creditcard from "./Creditcard";
+import { getCartFromLocalStorage, setCartItemsToLocalStorage } from "./localStorage";
 const PUBLISHABLE_KEY =
   "pk_test_51HFBcSBk6RQIk01BvzVaXHyXVibo2Lca4pPkHmYrVInKvXwYagGZCnMp7d3zCTfPLFQbrJyK4Qqpr6LOofDJdn9600ZOs1Fouf";
 
-const stripePromise = loadStripe(PUBLISHABLE_KEY)
+const stripePromise = loadStripe(PUBLISHABLE_KEY);
 function App() {
   const [{ items, cart }, dispatch] = useStateValue();
 
@@ -62,7 +62,20 @@ function App() {
           items: itemsToBeAdded,
         },
       });
+      if (getCartFromLocalStorage()) {
+        const cartItems = getCartFromLocalStorage('cart');
+        cartItems.forEach((item) => {
+          console.log(item)
+          dispatch({
+            type: "ADD_TO_CART",
+            payload: {
+              item
+            },
+          })
+        })
+      }
     };
+
     fetchData();
   }, []);
   return (
@@ -82,7 +95,7 @@ function App() {
               <ItemDescription />
             </Route>
             <Route path="/payment">
-             <Creditcard />
+              <Creditcard />
             </Route>
             <Route path="/">
               <Header />

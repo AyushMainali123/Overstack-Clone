@@ -1,3 +1,6 @@
+import { setCartItemsToLocalStorage } from "./localStorage";
+import CartItem from "./CartItem";
+
 export const initialState = {
   items: [],
   cart: [],
@@ -9,6 +12,10 @@ const reducer = (state = initialState, action) => {
     case "ADD_ITEMS":
       return { ...state, items: [...state.items, ...action.payload.items] };
     case "ADD_TO_CART":
+      setCartItemsToLocalStorage("cart", [
+        ...state.cart,
+        { ...action.payload.item },
+      ]);
       return { ...state, cart: [...state.cart, { ...action.payload.item }] };
     case "UPDATE_QUANTITY":
       const newCart = state.cart.map((cartItem) => {
@@ -16,15 +23,17 @@ const reducer = (state = initialState, action) => {
           ? { ...cartItem, quantity: action.payload.quantity }
           : { ...cartItem };
       });
+      setCartItemsToLocalStorage("cart", newCart);
       return { ...state, cart: newCart };
     case "REMOVE_FROM_CART":
+      const newCartAfterRemoval = state.cart.filter((CartItem) => CartItem.id !== action.payload.id)
+      setCartItemsToLocalStorage('cart', newCartAfterRemoval)
       return {
         ...state,
-        cart: state.cart.filter(
-          (cartItem) => cartItem.id !== action.payload.id
-        ),
+        cart: newCartAfterRemoval,
       };
     case "CLEAR_CART":
+      setCartItemsToLocalStorage('cart', [])
       return {
         ...state,
         cart: [],
