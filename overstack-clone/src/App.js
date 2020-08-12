@@ -9,6 +9,14 @@ import { useStateValue } from "./StateProvider";
 import Checkout from "./Checkout";
 import SignInPage from "./SignInPage";
 import { auth } from "./firebase";
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
+import Creditcard from './Creditcard'
+
+const PUBLISHABLE_KEY =
+  "pk_test_51HFBcSBk6RQIk01BvzVaXHyXVibo2Lca4pPkHmYrVInKvXwYagGZCnMp7d3zCTfPLFQbrJyK4Qqpr6LOofDJdn9600ZOs1Fouf";
+
+const stripePromise = loadStripe(PUBLISHABLE_KEY)
 function App() {
   const [{ items, cart }, dispatch] = useStateValue();
 
@@ -59,25 +67,30 @@ function App() {
   }, []);
   return (
     <Router>
-      <div className="app">
-        <Switch>
-          <Route path="/signin">
-            <Header />
-            <SignInPage />
-          </Route>
-          <Route path="/checkout">
-            <Checkout />
-          </Route>
-          <Route path="/product/:id">
-            <Header />
-            <ItemDescription />
-          </Route>
-          <Route path="/">
-            <Header />
-            <Home />
-          </Route>
-        </Switch>
-      </div>
+      <Elements stripe={stripePromise}>
+        <div className="app">
+          <Switch>
+            <Route path="/signin">
+              <Header />
+              <SignInPage />
+            </Route>
+            <Route path="/checkout">
+              <Checkout />
+            </Route>
+            <Route path="/product/:id">
+              <Header />
+              <ItemDescription />
+            </Route>
+            <Route path="/payment">
+             <Creditcard />
+            </Route>
+            <Route path="/">
+              <Header />
+              <Home />
+            </Route>
+          </Switch>
+        </div>
+      </Elements>
     </Router>
   );
 }

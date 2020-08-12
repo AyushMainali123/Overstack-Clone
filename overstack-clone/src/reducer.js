@@ -24,6 +24,11 @@ const reducer = (state = initialState, action) => {
           (cartItem) => cartItem.id !== action.payload.id
         ),
       };
+    case "CLEAR_CART":
+      return {
+        ...state,
+        cart: [],
+      };
     case "SET_USER":
       return { ...state, user: action.payload.user };
     default:

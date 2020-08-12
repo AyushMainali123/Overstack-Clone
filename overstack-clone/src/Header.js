@@ -9,14 +9,16 @@ import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
 import { Button } from "@material-ui/core";
 
-const trunchuate = (str, len) => str.length>len ? `${str.slice(0, len)}...` : str
+const trunchuate = (str, len) =>
+  str.length > len ? `${str.slice(0, len)}...` : str;
 
 const Header = () => {
-  const [{  cart, user }] = useStateValue();
+  const [{ cart, user }, dispatch] = useStateValue();
   const handleUserClick = (e) => {
-    if (user) {
-      auth.signOut();
-    }
+    auth.signOut();
+    dispatch({
+      type: "CLEAR_CART",
+    });
   };
   return (
     <div className="header">

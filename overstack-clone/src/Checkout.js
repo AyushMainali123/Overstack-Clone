@@ -6,12 +6,14 @@ import { Button } from "@material-ui/core";
 import "./Checkout.css";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import CartItem from "./CartItem";
-import numeral from 'numeral'
+import numeral, { format } from "numeral";
+import Creditcard from "./Creditcard";
+import { useHistory } from "react-router-dom";
 const Checkout = () => {
-  const [{ cart }] = useStateValue();
+  const [{ cart, user }] = useStateValue();
   const [discount, setDiscount] = useState(0);
   const [subtotal, setsubtotal] = useState(0);
-
+  const history = useHistory();
   useEffect(() => {
     const total = cart.reduce(
       (acc, curr) => acc + curr.quantity * curr.price,
@@ -20,6 +22,36 @@ const Checkout = () => {
     setsubtotal(total);
     setDiscount(total * 0.05);
   }, [cart]);
+
+  const showButton = () => { 
+    const classname = 'checkout__payButton'
+    if (user == null) {
+      return (
+        <Link to="/signin">
+          <Button className={classname} variant = "contained" color = "primary">
+            <LockIcon />
+            <span>Sign In To Pay</span>
+          </Button>
+        </Link>
+      );
+    }
+
+    if (cart.length) {
+      return (
+        <Creditcard
+          total={Number(numeral(`${subtotal - discount}`).format("0.00"))}
+          history={history}
+        />
+      );
+    }
+    return (
+      <Button className={classname} variant="contained" color="primary">
+        <LockIcon />
+        <span>No Items In A Cart</span>
+      </Button>
+    );
+  };
+
   return (
     <div className="checkout">
       <div className="checkout__header">
@@ -32,10 +64,10 @@ const Checkout = () => {
         </Link>
         <div className="checkout__headerRight">
           <span>Shopping Cart</span>
-          <Button>
+          {/* <Button>
             <LockIcon />
             <span>Check Out</span>
-          </Button>
+          </Button> */}
         </div>
       </div>
       <hr />
@@ -79,10 +111,7 @@ const Checkout = () => {
             <span>Your Total:</span>
             <span>{numeral(subtotal - discount).format("$0,0.00")}</span>
           </div>
-          <Button>
-            <LockIcon />
-            <span>Check Out</span>
-          </Button>
+         {showButton()}
         </div>
       </div>
     </div>
