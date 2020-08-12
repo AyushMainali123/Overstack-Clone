@@ -6,7 +6,7 @@ import { useStateValue } from "./StateProvider";
 const ItemsOnSale = () => {
 const [{ items, cart }, dispatch] = useStateValue();
   return (
-    <div className="itemsOnSale">      
+    <div className="itemsOnSale" id= "itemsOnSale">      
       <h2 className="itemsOnSale__title">Items On Sale</h2>
       <div className="itemsOnSale__items">
         {items.map((item) => {

@@ -70,3 +70,14 @@
     margin-top: 20px;
   }
 }
+
+@media(max-width: 430px){
+  .itemDescription{
+    padding: 0;
+    margin-bottom:30px;
+  }
+  .itemDescription__imageContainer{
+    max-width: 300px;
+    margin-right: 0;
+  }
+}

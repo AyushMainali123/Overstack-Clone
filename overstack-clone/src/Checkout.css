@@ -118,5 +118,15 @@
   }
   .checkout__right{
     width: 100%;
+    margin: 0;
+  }
+}
+@media(max-width: 430px){
+  .checkout__headerRight>span{
+    font-size: 14px;
+    margin-right: 0;
+  }
+  .checkout__right{
+    height: auto;
   }
 }

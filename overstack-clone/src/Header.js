@@ -9,6 +9,8 @@ import { useStateValue } from "./StateProvider";
 import { auth } from "./firebase";
 import { Button } from "@material-ui/core";
 
+const trunchuate = (str, len) => str.length>len ? `${str.slice(0, len)}...` : str
+
 const Header = () => {
   const [{  cart, user }] = useStateValue();
   const handleUserClick = (e) => {
@@ -40,7 +42,7 @@ const Header = () => {
           <div className="header__link">
             <PermIdentityOutlinedIcon className="header__icon" />
             <span className="header__linkText">
-              {user ? user.email : "Sign In"}
+              {user ? trunchuate(`${user.email}`, 8) : "Sign In"}
             </span>
           </div>
         </Link>

@@ -8,13 +8,16 @@ const Banner = () => {
           alt="Background"
           className = "banner__background"
         /> */}
-        <div className = "banner__imageContainer">
-          <img
-            src="https://ak1.ostkcdn.com/img/mxc/20200803-rugs-intl-991.svg"
-            alt="Banner"
-            className="banner__frontImage"
-          />
-        </div>
+        <a href="#itemsOnSale">
+          <div className="banner__imageContainer">
+            <img
+              src="https://ak1.ostkcdn.com/img/mxc/20200803-rugs-intl-991.svg"
+              alt="Banner"
+              className="banner__frontImage"
+            />
+          </div>
+        </a>
+        
       </div>
     );
 }

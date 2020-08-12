@@ -54,3 +54,12 @@
     outline: none;
     cursor: pointer;
 }
+@media(max-width: 430px){
+  .cartItem{
+      flex-direction: column;
+  }
+  .cartItem__imageContainer{
+      width: 100%;
+      max-width: 100%;
+  }
+}
