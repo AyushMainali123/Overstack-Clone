@@ -9,14 +9,12 @@ import { useStateValue } from "./StateProvider";
 import Checkout from "./Checkout";
 import SignInPage from "./SignInPage";
 import { auth } from "./firebase";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
 import Creditcard from "./Creditcard";
-import { getCartFromLocalStorage, setCartItemsToLocalStorage } from "./localStorage";
-const PUBLISHABLE_KEY =
-  "pk_test_51HFBcSBk6RQIk01BvzVaXHyXVibo2Lca4pPkHmYrVInKvXwYagGZCnMp7d3zCTfPLFQbrJyK4Qqpr6LOofDJdn9600ZOs1Fouf";
+import { getCartFromLocalStorage } from "./localStorage";
 
-const stripePromise = loadStripe(PUBLISHABLE_KEY);
+// const PUBLISHABLE_KEY =
+//   "pk_test_51HFBcSBk6RQIk01BvzVaXHyXVibo2Lca4pPkHmYrVInKvXwYagGZCnMp7d3zCTfPLFQbrJyK4Qqpr6LOofDJdn9600ZOs1Fouf";
+
 function App() {
   const [{ items, cart }, dispatch] = useStateValue();
 
@@ -80,7 +78,7 @@ function App() {
   }, []);
   return (
     <Router>
-      <Elements stripe={stripePromise}>
+
         <div className="app">
           <Switch>
             <Route path="/signin">
@@ -103,7 +101,6 @@ function App() {
             </Route>
           </Switch>
         </div>
-      </Elements>
     </Router>
   );
 }

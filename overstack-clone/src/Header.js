@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import SearchIcon from "@material-ui/icons/Search";
 import PermIdentityOutlinedIcon from "@material-ui/icons/PermIdentityOutlined";
@@ -13,13 +13,32 @@ const trunchuate = (str, len) =>
   str.length > len ? `${str.slice(0, len)}...` : str;
 
 const Header = () => {
-  const [{ cart, user }, dispatch] = useStateValue();
+  const [{ cart, user, items }, dispatch] = useStateValue();
+  const [searchValue, setSearchValue] = useState('')
+
+
   const handleUserClick = (e) => {
     auth.signOut();
     dispatch({
       type: "CLEAR_CART",
     });
   };
+
+  const handleSearchClick = e => {
+    e.preventDefault()
+    setSearchValue(e.target.value)
+    const lowerCasedSearchValue = searchValue.toLowerCase()
+    const itemsToShow = items.filter(cartItem => {
+      const loweredCasedCartItem = cartItem.title.toLowerCase() 
+      if (loweredCasedCartItem.includes(lowerCasedSearchValue)) return true;
+    })
+    dispatch({
+      type: "UPDATE_ITEMS_TO_SHOW",
+      payload: {
+        itemsToShow
+      }
+    })
+  }
   return (
     <div className="header">
       <Link to="/">
@@ -34,8 +53,10 @@ const Header = () => {
           type="text"
           className="header__searchBoxInput"
           placeholder="Search"
+          value={searchValue}
+          onChange = {handleSearchClick}
         />
-        <button className="header__searchIcon">
+        <button className="header__searchIcon" onClick = {handleSearchClick}>
           <SearchIcon />
         </button>
       </form>

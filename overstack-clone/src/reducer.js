@@ -4,13 +4,17 @@ import CartItem from "./CartItem";
 export const initialState = {
   items: [],
   cart: [],
+  itemsToShow: [],
   user: null,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "ADD_ITEMS":
-      return { ...state, items: [...state.items, ...action.payload.items] };
+      const itemsToBeAdded = [...state.items, ...action.payload.items]
+      return { ...state, items: itemsToBeAdded, itemsToShow: itemsToBeAdded };
+    case "UPDATE_ITEMS_TO_SHOW":
+      return {...state, itemsToShow: action.payload.itemsToShow}
     case "ADD_TO_CART":
       setCartItemsToLocalStorage("cart", [
         ...state.cart,
